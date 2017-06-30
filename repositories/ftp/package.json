@@ -19,11 +19,12 @@
   "description": "FTP file system for webdav-server",
   "dependencies": {
     "ftp": "^0.3.10",
-    "webdav-server": "^2.0.0"
+    "webdav-server": "^2.0.2"
   },
   "devDependencies": {
     "@types/ftp": "^0.3.29",
     "@types/node": "^8.0.3"
   },
-  "types": "./FTPFileSystem.d.ts"
+  "types": "./FTPFileSystem.d.ts",
+  "name": "@webdav-server/ftp"
 }

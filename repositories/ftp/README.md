@@ -9,15 +9,15 @@ npm install @webdav-server/ftp
 
 ## Usage
 
-### For webdav-server
-
 ```javascript
 // TypeScript
+import { v2 as webdav } from 'webdav-server'
 import * as ftp from '@webdav-server/ftp'
 // JavaScript
-const ftp = require('@webdav-server/ftp')
+const webdav = require('webdav-server').v2,
+      ftp = require('@webdav-server/ftp');
 
-const server = info.startServer({
+const server = new webdav.WebDAVServer({
     // [...]
     autoLoad: {
         // [...]

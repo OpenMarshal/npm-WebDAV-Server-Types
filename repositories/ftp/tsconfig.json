@@ -4,6 +4,7 @@
     "noImplicitAny": false,
     "removeComments": false,
     "preserveConstEnums": true,
+    "declaration": true,
     "typeRoots": [
       "./node_modules/@types"
     ],
