@@ -1,4 +1,4 @@
-# List of file systems for the `webdav-server` npm package
+# List of file systems for the `webdav-server` npm package in the npm scope `@webdav-server`
 
 This repository list some file systems which can be useful for the development of a custom implementation of the [`webdav-server` npm package](https://www.npmjs.com/package/webdav-server).
 
