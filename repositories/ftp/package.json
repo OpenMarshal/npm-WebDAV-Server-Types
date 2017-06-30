@@ -4,6 +4,7 @@
   },
   "main": "./FTPFileSystem",
   "keywords": [
+    "@webdav-server",
     "webdav-server",
     "webdav",
     "server",
