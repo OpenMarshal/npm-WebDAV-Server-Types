@@ -1,6 +1,8 @@
 # FTP File System for webdav-server
 > webdav-server version 2
 
+[![npm Version](https://img.shields.io/npm/v/@webdav-server/ftp.svg)](https://www.npmjs.com/package/@webdav-server/ftp)
+
 ## Install
 
 ```bash
