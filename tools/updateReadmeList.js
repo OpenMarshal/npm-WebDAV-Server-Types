@@ -13,7 +13,7 @@ fs.readdir(packager.repositoriesPath, (e, repos) => {
             throw e;
         
         content = content.toString();
-        let leftSize = content.indexOf('Repository | - | -');
+        let leftSize = content.indexOf('Repository | Version | - | -');
         leftSize = content.indexOf('-|-|-', leftSize) + 1;
         leftSize = content.indexOf('\r', leftSize) + 1;
         let rightSize = content.indexOf('\r\r', leftSize);
@@ -26,7 +26,10 @@ fs.readdir(packager.repositoriesPath, (e, repos) => {
         const right = content.substring(rightSize);
         
         content = left + repos
-            .map((name) => name + ' | [GitHub](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/' + name + ') | [npm](https://www.npmjs.com/package/@webdav-server/' + name + ')')
+            .map((name) => {
+                const version = JSON.parse(fs.readFileSync(path.join(packager.repositoriesPath, name, 'package.json'))).version;
+                return name + ' | ' + version + ' | [GitHub](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/' + name + ') | [npm](https://www.npmjs.com/package/@webdav-server/' + name + ')'
+            })
             .join('\n') + right;
 
         fs.writeFile(readmePath, content, (e) => {
