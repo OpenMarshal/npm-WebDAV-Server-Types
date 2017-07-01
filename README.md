@@ -1,5 +1,10 @@
 # List of file systems for the `webdav-server` npm package in the npm scope `@webdav-server`
 
+[![Join the chat at https://gitter.im/npm-WebDAV-Server/Lobby](https://badges.gitter.im/npm-WebDAV-Server/Lobby.svg)](https://gitter.im/npm-WebDAV-Server/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/npm-WebDAV-Server/help-v2](https://img.shields.io/badge/chat-help%20v2-blue.svg)](https://gitter.im/npm-WebDAV-Server/help-v2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/npm-WebDAV-Server/help-v1](https://img.shields.io/badge/chat-help%20v1-blue.svg)](https://gitter.im/npm-WebDAV-Server/help-v1?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/npm-WebDAV-Server/file-systems](https://img.shields.io/badge/chat-%40webdav--server-blue.svg)](https://gitter.im/npm-WebDAV-Server/file-systems?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This repository list some file systems which can be useful for the development of a custom implementation of the [`webdav-server` npm package](https://www.npmjs.com/package/webdav-server).
 
 **This repository is not operational yet.** It is waiting for the release of the version 2 of the `webdav-server` package.
