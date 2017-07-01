@@ -1,17 +1,17 @@
 /// <reference types="node" />
-import { v2 as webdav } from '../../../npm-WebDAV-Server/lib/index';
+import { v2 as webdav } from 'webdav-server';
 import { Readable, Writable } from 'stream';
 export declare class Resource {
     props: webdav.IPropertyManager;
     locks: webdav.ILockManager;
     constructor(data?: Resource);
 }
-export declare class WebFileSystemSerializer implements webdav.FileSystemSerializer {
+export declare class HTTPFileSystemSerializer implements webdav.FileSystemSerializer {
     uid(): string;
-    serialize(fs: WebFileSystem, callback: webdav.ReturnCallback<any>): void;
-    unserialize(serializedData: any, callback: webdav.ReturnCallback<WebFileSystem>): void;
+    serialize(fs: HTTPFileSystem, callback: webdav.ReturnCallback<any>): void;
+    unserialize(serializedData: any, callback: webdav.ReturnCallback<HTTPFileSystem>): void;
 }
-export declare class WebFileSystem extends webdav.FileSystem {
+export declare class HTTPFileSystem extends webdav.FileSystem {
     resources: {
         [path: string]: Resource;
     };

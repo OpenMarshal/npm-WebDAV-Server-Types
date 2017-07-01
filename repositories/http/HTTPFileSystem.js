@@ -10,45 +10,45 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var index_1 = require("../../../npm-WebDAV-Server/lib/index");
+var webdav_server_1 = require("webdav-server");
 var request = require("request");
 var Resource = (function () {
     function Resource(data) {
-        this.props = new index_1.v2.LocalPropertyManager(data ? data.props : undefined);
-        this.locks = new index_1.v2.LocalLockManager();
+        this.props = new webdav_server_1.v2.LocalPropertyManager(data ? data.props : undefined);
+        this.locks = new webdav_server_1.v2.LocalLockManager();
     }
     return Resource;
 }());
 exports.Resource = Resource;
 // Serializer
-var WebFileSystemSerializer = (function () {
-    function WebFileSystemSerializer() {
+var HTTPFileSystemSerializer = (function () {
+    function HTTPFileSystemSerializer() {
     }
-    WebFileSystemSerializer.prototype.uid = function () {
-        return "WebFileSystemSerializer_1.0.0";
+    HTTPFileSystemSerializer.prototype.uid = function () {
+        return "HTTPFileSystemSerializer_1.0.0";
     };
-    WebFileSystemSerializer.prototype.serialize = function (fs, callback) {
+    HTTPFileSystemSerializer.prototype.serialize = function (fs, callback) {
         callback(null, {
             url: fs.url,
             resources: fs.resources
         });
     };
-    WebFileSystemSerializer.prototype.unserialize = function (serializedData, callback) {
-        var fs = new WebFileSystem(serializedData.url);
+    HTTPFileSystemSerializer.prototype.unserialize = function (serializedData, callback) {
+        var fs = new HTTPFileSystem(serializedData.url);
         for (var _i = 0, _a = serializedData.resources; _i < _a.length; _i++) {
             var path = _a[_i];
             serializedData[path] = new Resource(serializedData.resources[path]);
         }
         callback(null, fs);
     };
-    return WebFileSystemSerializer;
+    return HTTPFileSystemSerializer;
 }());
-exports.WebFileSystemSerializer = WebFileSystemSerializer;
+exports.HTTPFileSystemSerializer = HTTPFileSystemSerializer;
 // File system
-var WebFileSystem = (function (_super) {
-    __extends(WebFileSystem, _super);
-    function WebFileSystem(url) {
-        var _this = _super.call(this, new WebFileSystemSerializer()) || this;
+var HTTPFileSystem = (function (_super) {
+    __extends(HTTPFileSystem, _super);
+    function HTTPFileSystem(url) {
+        var _this = _super.call(this, new HTTPFileSystemSerializer()) || this;
         if (!url)
             url = '';
         if (url.lastIndexOf('/') === url.length - 1)
@@ -57,28 +57,28 @@ var WebFileSystem = (function (_super) {
         _this.url = url;
         return _this;
     }
-    WebFileSystem.prototype.findResource = function (path) {
+    HTTPFileSystem.prototype.findResource = function (path) {
         var sPath = path.toString();
         var r = this.resources[sPath];
         if (!r)
             return this.resources[sPath] = new Resource();
         return r;
     };
-    WebFileSystem.prototype._openReadStream = function (path, info, callback) {
+    HTTPFileSystem.prototype._openReadStream = function (path, info, callback) {
         var stream = request(this.url + path.toString());
         callback(null, stream);
     };
-    WebFileSystem.prototype._openWriteStream = function (path, info, callback) {
+    HTTPFileSystem.prototype._openWriteStream = function (path, info, callback) {
         var stream = request.put(this.url + path.toString());
         callback(null, stream);
     };
-    WebFileSystem.prototype._propertyManager = function (path, info, callback) {
+    HTTPFileSystem.prototype._propertyManager = function (path, info, callback) {
         callback(null, this.findResource(path).props);
     };
-    WebFileSystem.prototype._lockManager = function (path, info, callback) {
+    HTTPFileSystem.prototype._lockManager = function (path, info, callback) {
         callback(null, this.findResource(path).locks);
     };
-    WebFileSystem.prototype._size = function (path, info, callback) {
+    HTTPFileSystem.prototype._size = function (path, info, callback) {
         request({
             url: this.url + path.toString(),
             method: 'HEAD'
@@ -94,7 +94,7 @@ var WebFileSystem = (function (_super) {
                 callback(null, undefined);
         });
     };
-    WebFileSystem.prototype._mimeType = function (path, info, callback) {
+    HTTPFileSystem.prototype._mimeType = function (path, info, callback) {
         request({
             url: this.url + path.toString(),
             method: 'HEAD'
@@ -108,9 +108,9 @@ var WebFileSystem = (function (_super) {
                 callback(null, 'application/octet-stream');
         });
     };
-    WebFileSystem.prototype._type = function (path, info, callback) {
-        callback(null, index_1.v2.ResourceType.File);
+    HTTPFileSystem.prototype._type = function (path, info, callback) {
+        callback(null, webdav_server_1.v2.ResourceType.File);
     };
-    return WebFileSystem;
-}(index_1.v2.FileSystem));
-exports.WebFileSystem = WebFileSystem;
+    return HTTPFileSystem;
+}(webdav_server_1.v2.FileSystem));
+exports.HTTPFileSystem = HTTPFileSystem;
