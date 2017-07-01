@@ -1,6 +1,8 @@
 # HTTP File System for webdav-server
 > webdav-server version 2
 
+[![npm Version](https://img.shields.io/npm/v/@webdav-server/http.svg)](https://www.npmjs.com/package/@webdav-server/http)
+
 Allow to get content from a web resource.
 
 ## Install
