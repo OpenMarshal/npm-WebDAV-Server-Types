@@ -6,11 +6,12 @@
   "keywords": [
     "@webdav-server",
     "webdav-server",
+    "file system",
     "webdav",
     "server",
     "ftp"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Adrien Castex <adrien.castex@gmail.com>",
   "license": "Unlicense",
   "repository": {

@@ -32,7 +32,7 @@ server.autoLoad((e) => {
     if(!e)
         return;
     
-    server.setFileSystem('/myFTPGatewey', new ftp.FTPFileSystem({
+    server.setFileSystem('/myFTPGateway', new ftp.FTPFileSystem({
         host: '127.0.0.1',
         port: 21,
         connTimeout: 1000,
