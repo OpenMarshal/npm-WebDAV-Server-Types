@@ -23,7 +23,8 @@ npm i @webdav-server/{{name}}
 You can find the list of the repositories here :
 
 Repository | - | -
--|-|-ftp | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/ftp) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/ftp.svg)](https://www.npmjs.com/package/@webdav-server/ftp)
+-|-|-
+ftp | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/ftp) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/ftp.svg)](https://www.npmjs.com/package/@webdav-server/ftp)
 http | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/http) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/http.svg)](https://www.npmjs.com/package/@webdav-server/http)
 
 Or make your own research here :
@@ -35,5 +36,16 @@ Or make your own research here :
 You can contribute and publish your own file systems in the `@webdav-server` npm scope by making a simple pull-request to this GitHub repository. To do so, you must create a folder in the `repositories` folder with the name of the package. Choose a name which describe well your file system. You can make it in TypeScript or in JavaScript. You can add your own `README.md`, `LICENSE`, etc in the subfolder, but you must to add the `node_modules` folder or this kind of folders. Take a look at the existing folders in the `repositories` folder and use them as examples.
 
 Do not hesitate to put yourself as author in the `package.json` of your new folder and to add your name in the `README.md`. When your pull-request will be accepted, the repository will be published under the scope `@webdav-server`, making your file system accessible to everyone.
+
+Here is the list of operations :
+1. Fork the project.
+2. Clone your forked project on your machine.
+3. Add a folder in the `/repositories` folder of the cloned project. The name of this new folder must be the one to use to publish your repository into `@webdav-server`.
+4. In this new folder, write your code, add a `package.json`, a `README.md`, a `LICENSE`, a `tsconfig.json` if you use TypeScript.
+5. When you checked that your creation is working well, commit your changes.
+6. Push your changes to your remote repository.
+7. Make a pull-request to the original repository, in order to add your creation to the repositories.
+8. Then, if your pull-request is accepted, it will be published on npm.
+9. If you make any change, you can make a new pull-request to update the repository.
 
 Thank you for your contribution.
