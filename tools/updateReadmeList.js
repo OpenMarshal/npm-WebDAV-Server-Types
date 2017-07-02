@@ -13,7 +13,7 @@ fs.readdir(packager.repositoriesPath, (e, repos) => {
             throw e;
         
         content = content.toString();
-        let leftSize = content.indexOf('Repository | Version | - | -');
+        let leftSize = content.indexOf('Repository | - | -');
         leftSize = content.indexOf('-|-|-', leftSize) + 1;
         leftSize = content.indexOf('\r', leftSize) + 1;
         let rightSize = content.indexOf('\r\r', leftSize);
@@ -27,8 +27,7 @@ fs.readdir(packager.repositoriesPath, (e, repos) => {
         
         content = left + repos
             .map((name) => {
-                const version = JSON.parse(fs.readFileSync(path.join(packager.repositoriesPath, name, 'package.json'))).version;
-                return name + ' | ' + version + ' | [GitHub](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/' + name + ') | [npm](https://www.npmjs.com/package/@webdav-server/' + name + ')'
+                return name + ' | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/' + name + ') | [![npm Version](https://img.shields.io/npm/v/@webdav-server/' + name + '.svg)](https://www.npmjs.com/package/@webdav-server/' + name + ')'
             })
             .join('\n') + right;
 

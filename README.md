@@ -22,9 +22,9 @@ npm i @webdav-server/{{name}}
 
 You can find the list of the repositories here :
 
-Repository | Version | - | -
--|-|-|-ftp | 1.0.2 | [GitHub](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/ftp) | [npm](https://www.npmjs.com/package/@webdav-server/ftp)
-http | 1.0.0 | [GitHub](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/http) | [npm](https://www.npmjs.com/package/@webdav-server/http)
+Repository | - | -
+-|-|-ftp | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/ftp) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/ftp.svg)](https://www.npmjs.com/package/@webdav-server/ftp)
+http | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/http) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/http.svg)](https://www.npmjs.com/package/@webdav-server/http)
 
 Or make your own research here :
 * [Repositories on GitHub](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories)
