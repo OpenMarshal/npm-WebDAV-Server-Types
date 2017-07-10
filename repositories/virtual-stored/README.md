@@ -33,7 +33,7 @@ const serializer = new virtualStored.VirtualStoredSerializer('password', {
     keyLen: 256
 });
 
-const server = new webdav.HTTPDAVServer({
+const server = new webdav.WebDAVServer({
     // [...]
     autoLoad: {
         // [...]
@@ -56,4 +56,6 @@ fs.mkdir(vsfsPath, (e) => {
         server.setFileSystemSync('/myPath', vsfs, false);
     })
 })
+
+server.start((s) => console.log('Ready on port', s.address().port));
 ```

@@ -23,7 +23,7 @@ const http = require('@webdav-server/http');
 const webdav = require('webdav-server').v2;
 const request = require('request');
 
-const server = new webdav.HTTPDAVServer({
+const server = new webdav.WebDAVServer({
     // [...]
     autoLoad: {
         // [...]
@@ -58,4 +58,6 @@ server.autoLoad((e) => {
         });
     });
 });
+
+server.start((s) => console.log('Ready on port', s.address().port));
 ```
