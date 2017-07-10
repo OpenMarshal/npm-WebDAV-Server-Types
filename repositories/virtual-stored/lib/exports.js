@@ -7,4 +7,4 @@ __export(require("./DeCipher"));
 __export(require("./VirtualStoredFileSystem"));
 __export(require("./VirtualStoredAllocator"));
 __export(require("./VirtualStoredResource"));
-__export(require("./VirtualStoredFileSystem"));
+__export(require("./VirtualStoredSerializer"));
