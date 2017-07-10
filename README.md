@@ -26,6 +26,7 @@ Repository | - | -
 -|-|-ftp | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/ftp) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/ftp.svg)](https://www.npmjs.com/package/@webdav-server/ftp)
 github | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/github) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/github.svg)](https://www.npmjs.com/package/@webdav-server/github)
 http | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/http) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/http.svg)](https://www.npmjs.com/package/@webdav-server/http)
+javascript | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/javascript) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/javascript.svg)](https://www.npmjs.com/package/@webdav-server/javascript)
 virtual-stored | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/virtual-stored) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/virtual-stored.svg)](https://www.npmjs.com/package/@webdav-server/virtual-stored)
 
 Or make your own research here :
