@@ -7,8 +7,6 @@
 
 This repository list some file systems which can be useful for the development of a custom implementation of the [`webdav-server` npm package](https://www.npmjs.com/package/webdav-server).
 
-**This repository is not operational yet.** It is waiting for the release of the version 2 of the `webdav-server` package.
-
 ## Install a repository
 
 You can install a file system package with the following command :
@@ -23,7 +21,8 @@ npm i @webdav-server/{{name}}
 You can find the list of the repositories here :
 
 Repository | - | -
--|-|-ftp | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/ftp) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/ftp.svg)](https://www.npmjs.com/package/@webdav-server/ftp)
+-|-|-
+ftp | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/ftp) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/ftp.svg)](https://www.npmjs.com/package/@webdav-server/ftp)
 github | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/github) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/github.svg)](https://www.npmjs.com/package/@webdav-server/github)
 http | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/http) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/http.svg)](https://www.npmjs.com/package/@webdav-server/http)
 javascript | [:octocat:](https://github.com/OpenMarshal/npm-WebDAV-Server-Types/tree/master/repositories/javascript) | [![npm Version](https://img.shields.io/npm/v/@webdav-server/javascript.svg)](https://www.npmjs.com/package/@webdav-server/javascript)
