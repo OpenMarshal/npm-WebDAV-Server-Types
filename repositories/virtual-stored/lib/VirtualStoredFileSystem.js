@@ -66,9 +66,12 @@ var VirtualStoredFileSystem = (function (_super) {
     VirtualStoredFileSystem.prototype._readDir = function (path, ctx, callback) {
         var sPath = path.toString(true);
         var paths = [];
-        for (var path_1 in this.resources)
-            if (path_1.length > sPath.length && path_1.indexOf(sPath) === 0)
-                paths.push(path_1);
+        for (var subPath in this.resources)
+            if (subPath.indexOf(sPath) === 0) {
+                var pSubPath = new webdav_server_1.v2.Path(subPath);
+                if (pSubPath.paths.length === path.paths.length + 1)
+                    paths.push(pSubPath);
+            }
         callback(null, paths);
     };
     VirtualStoredFileSystem.prototype._creationDate = function (path, ctx, callback) {

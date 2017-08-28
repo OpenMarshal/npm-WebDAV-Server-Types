@@ -81,9 +81,13 @@ export class VirtualStoredFileSystem extends webdav.FileSystem
         const sPath = path.toString(true);
 
         const paths = [];
-        for(const path in this.resources)
-            if(path.length > sPath.length && path.indexOf(sPath) === 0)
-                paths.push(path);
+        for(const subPath in this.resources)
+            if(subPath.indexOf(sPath) === 0)
+            {
+                var pSubPath = new webdav.Path(subPath);
+                if(pSubPath.paths.length === path.paths.length + 1)
+                    paths.push(pSubPath);
+            }
         
         callback(null, paths);
     }
