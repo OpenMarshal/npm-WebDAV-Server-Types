@@ -4,11 +4,28 @@ import { v2 as webdav } from 'webdav-server'
 import { spawn } from 'child_process'
 import { join } from 'path'
 
+export interface JavascriptFileSystemOptions
+{
+    useEval : boolean
+    currentWorkingDirectory ?: string
+    disableSourceReading ?: boolean
+}
+class JavascriptFileSystemOptionsDefaults implements JavascriptFileSystemOptions
+{
+    useEval : boolean = false
+    disableSourceReading : boolean = false
+}
+
 export class JavascriptFileSystem extends webdav.VirtualFileSystem
 {
-    constructor(public useEval : boolean = false, public currentWorkingDirectory ?: string)
+    constructor(public options : JavascriptFileSystemOptions)
     {
         super(new JavascriptSerializer());
+
+        const defaultValues = new JavascriptFileSystemOptionsDefaults();
+        for(const name of Object.keys(defaultValues))
+            if(this.options[name] === undefined)
+                this.options[name] = defaultValues[name];
     }
 
     protected _openReadStream(path : webdav.Path, ctx : webdav.OpenReadStreamInfo, callback : webdav.ReturnCallback<Readable>) : void
@@ -16,10 +33,10 @@ export class JavascriptFileSystem extends webdav.VirtualFileSystem
         super._openReadStream(path, ctx, (e, rStream) => {
             if(e)
                 return callback(e);
-            if(ctx.targetSource)
+            if(ctx.targetSource && !this.options.disableSourceReading)
                 return callback(e, rStream);
             
-            if(this.useEval)
+            if(this.options.useEval)
             {
                 let data = '';
                 rStream.on('data', (chunk : Buffer | string) => {
@@ -59,7 +76,7 @@ export class JavascriptFileSystem extends webdav.VirtualFileSystem
             }
             
             const p = spawn('node', [ ], {
-                cwd: this.currentWorkingDirectory
+                cwd: this.options.currentWorkingDirectory
             });
             if(!p.pid)
                 return callback(webdav.Errors.Forbidden);

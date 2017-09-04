@@ -24,8 +24,7 @@ var JavascriptSerializer = (function (_super) {
         _super.prototype.serialize.call(this, fs, function (e, data) {
             if (e)
                 return callback(e);
-            data.currentWorkingDirectory = fs.currentWorkingDirectory;
-            data.useEval = fs.useEval;
+            data.options = fs.options;
             callback(null, data);
         });
     };
@@ -34,7 +33,11 @@ var JavascriptSerializer = (function (_super) {
         _super.prototype.unserialize.call(this, serializedData, function (e, fs) {
             if (e)
                 return callback(e);
-            var ffs = new JavascriptFileSystem_1.JavascriptFileSystem(serializedData.useEval, serializedData.currentWorkingDirectory);
+            var options = serializedData.useEval !== undefined ? {
+                useEval: serializedData.useEval,
+                currentWorkingDirectory: serializedData.currentWorkingDirectory
+            } : serializedData.options;
+            var ffs = new JavascriptFileSystem_1.JavascriptFileSystem(options);
             for (var name_1 in fs)
                 ffs[name_1] = fs[name_1];
             ffs.setSerializer(_this);

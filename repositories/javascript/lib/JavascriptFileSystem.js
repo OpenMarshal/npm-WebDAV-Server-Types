@@ -14,13 +14,24 @@ var JavascriptSerializer_1 = require("./JavascriptSerializer");
 var stream_1 = require("stream");
 var webdav_server_1 = require("webdav-server");
 var child_process_1 = require("child_process");
+var JavascriptFileSystemOptionsDefaults = (function () {
+    function JavascriptFileSystemOptionsDefaults() {
+        this.useEval = false;
+        this.disableSourceReading = false;
+    }
+    return JavascriptFileSystemOptionsDefaults;
+}());
 var JavascriptFileSystem = (function (_super) {
     __extends(JavascriptFileSystem, _super);
-    function JavascriptFileSystem(useEval, currentWorkingDirectory) {
-        if (useEval === void 0) { useEval = false; }
+    function JavascriptFileSystem(options) {
         var _this = _super.call(this, new JavascriptSerializer_1.JavascriptSerializer()) || this;
-        _this.useEval = useEval;
-        _this.currentWorkingDirectory = currentWorkingDirectory;
+        _this.options = options;
+        var defaultValues = new JavascriptFileSystemOptionsDefaults();
+        for (var _i = 0, _a = Object.keys(defaultValues); _i < _a.length; _i++) {
+            var name_1 = _a[_i];
+            if (_this.options[name_1] === undefined)
+                _this.options[name_1] = defaultValues[name_1];
+        }
         return _this;
     }
     JavascriptFileSystem.prototype._openReadStream = function (path, ctx, callback) {
@@ -28,9 +39,9 @@ var JavascriptFileSystem = (function (_super) {
         _super.prototype._openReadStream.call(this, path, ctx, function (e, rStream) {
             if (e)
                 return callback(e);
-            if (ctx.targetSource)
+            if (ctx.targetSource && !_this.options.disableSourceReading)
                 return callback(e, rStream);
-            if (_this.useEval) {
+            if (_this.options.useEval) {
                 var data_1 = '';
                 rStream.on('data', function (chunk) {
                     data_1 += chunk.toString();
@@ -64,7 +75,7 @@ var JavascriptFileSystem = (function (_super) {
                 return;
             }
             var p = child_process_1.spawn('node', [], {
-                cwd: _this.currentWorkingDirectory
+                cwd: _this.options.currentWorkingDirectory
             });
             if (!p.pid)
                 return callback(webdav_server_1.v2.Errors.Forbidden);

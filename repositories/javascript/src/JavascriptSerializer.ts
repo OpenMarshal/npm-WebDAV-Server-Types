@@ -14,8 +14,7 @@ export class JavascriptSerializer extends webdav.VirtualSerializer
             if(e)
                 return callback(e);
             
-            data.currentWorkingDirectory = fs.currentWorkingDirectory;
-            data.useEval = fs.useEval;
+            data.options = fs.options;
             callback(null, data);
         })
     }
@@ -25,8 +24,13 @@ export class JavascriptSerializer extends webdav.VirtualSerializer
         super.unserialize(serializedData, (e, fs) => {
             if(e)
                 return callback(e);
+
+            const options = serializedData.useEval !== undefined ? {
+                useEval: serializedData.useEval,
+                currentWorkingDirectory: serializedData.currentWorkingDirectory
+            } : serializedData.options;
             
-            const ffs = new JavascriptFileSystem(serializedData.useEval, serializedData.currentWorkingDirectory);
+            const ffs = new JavascriptFileSystem(options);
             for(const name in fs)
                 ffs[name] = fs[name];
             ffs.setSerializer(this);

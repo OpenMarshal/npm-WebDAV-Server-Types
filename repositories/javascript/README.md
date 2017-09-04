@@ -16,6 +16,14 @@ The exec mode will execute the source code in a new `node` processus.
 npm install @webdav-server/javascript
 ```
 
+## Options
+
+Name | Type | Optional | Description
+-|-|-
+useEval | boolean | false | 
+currentWorkingDirectory | string | true | 
+disableSourceReading | boolean | true | 
+
 ## Usage
 
 ```javascript
@@ -37,8 +45,12 @@ const server = new webdav.WebDAVServer({
     }
 })
 
-const jsFileSystemEval = new js.JavascriptFileSystem(true);
-const jsFileSystemExec = new js.JavascriptFileSystem(false);
+const jsFileSystemEval = new js.JavascriptFileSystem({
+    useEval: true
+});
+const jsFileSystemExec = new js.JavascriptFileSystem({
+    useEval: false
+});
 
 server.setFileSystemSync('/eval', jsFileSystemEval, false);
 server.setFileSystemSync('/exec', jsFileSystemExec, false);
