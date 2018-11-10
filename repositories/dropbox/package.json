@@ -1,0 +1,32 @@
+{
+  "engines": {
+    "node": ">= 4"
+  },
+  "main": "./lib/exports",
+  "keywords": [
+    "@webdav-server",
+    "webdav-server",
+    "file system",
+    "dropbox",
+    "webdav",
+    "server"
+  ],
+  "version": "1.0.1",
+  "author": "Adrien Castex <adrien.castex@gmail.com>",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenMarshal/npm-WebDAV-Server-Types.git"
+  },
+  "description": "Dropbox file system for webdav-server",
+  "dependencies": {
+    "dropbox": "^4.0.12",
+    "isomorphic-fetch": "^2.2.1",
+    "webdav-server": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.9"
+  },
+  "types": "./lib/exports.d.ts",
+  "name": "@webdav-server/dropbox"
+}
