@@ -6,12 +6,13 @@
   "keywords": [
     "@webdav-server",
     "webdav-server",
+    "webdavfsinfo",
     "file system",
     "dropbox",
     "webdav",
     "server"
   ],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Adrien Castex <adrien.castex@gmail.com>",
   "license": "Unlicense",
   "repository": {
